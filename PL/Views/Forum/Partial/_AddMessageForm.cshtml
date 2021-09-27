@@ -1,0 +1,22 @@
+﻿@model WebForum.NewMessageFormModel
+    <div class="container border border-dark">
+        @using (Html.BeginForm("AddNewMessage", "Forum", FormMethod.Post, new { @class = "NewMessageForm" }))
+        {
+            @Html.ValidationSummary()
+        <p>
+            <span>Enter Message Text:</span>
+        </p>
+        <p>
+            <span>
+                @Html.TextAreaFor(m => m.Text, new { @class = "topic-text-input", wrap = "off", rows = "20" })
+            </span>
+        </p>
+        
+            <span>
+                @Html.HiddenFor(m => m.TopicId)
+            </span>
+            <p>
+            <input type="submit" class="btn btn-info mb-2" value="Add Message">
+             </p>
+        }
+    </div>

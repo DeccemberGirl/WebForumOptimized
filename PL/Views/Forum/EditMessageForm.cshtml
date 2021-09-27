@@ -1,0 +1,17 @@
+﻿@model WebForum.MessageDTO
+
+<h2 class="pt-4 pb-4"> Message Edit</h2>
+<div class="container border border-dark">
+    @using (Html.BeginForm("EditMessage", "Forum", FormMethod.Post, new { @class = "editMessageForm" }))
+    {
+        @Html.ValidationSummary()
+    <p><span>Edit the text of the message :</span></p>
+        @Html.HiddenFor(m => m.Id);
+        @Html.HiddenFor(m => m.TopicId);
+        @Html.HiddenFor(m => m.UserForumId);
+        @Html.HiddenFor(m => m.UserName);
+        @Html.HiddenFor(m => m.Date);
+<p>@Html.TextAreaFor(m => m.Text, new { @class = "topic-text-input", wrap = "off", rows = "20" })</p>
+        <input type="submit" class="btn btn-info  mb-4" value="Edit">
+    }
+</div>

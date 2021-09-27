@@ -1,0 +1,31 @@
+﻿@model IEnumerable<WebForum.MessageDTO>
+@using Microsoft.AspNet.Identity;
+@if (Model != null)
+{
+    foreach (var message in Model)
+    {
+        
+    <div class="container border border-dark">
+        <div class="row">
+            <div class="col-sm-3 border border-left-0 border-top-0 border-bottom-0 border-dark" style="background-color: antiquewhite">
+                <p>Date: @message.Date </p> <p>UsersName: @message.UserName </p> <p>Message Id: @message.Id</p>
+                @if (User.IsInRole("admin"))
+                {
+                    @Html.ActionLink("Delete Message", "DeleteMessage", "Forum", new { messageId = message.Id, topicId = message.TopicId },
+                         new { @class = "btn btn-info mb-2" })
+                }
+                @if (User.Identity.GetUserId() == message.UserForumId)
+                {
+                    @Html.ActionLink("Edit Message", "EditMessageForm", "Forum", message,
+                         new { @class = "btn btn-info mb-2" })
+                }
+            </div>
+            <div class="col">
+                <p>@message.Text</p>
+            </div>
+        </div>
+        
+    </div>
+            <hr />
+            }
+            }

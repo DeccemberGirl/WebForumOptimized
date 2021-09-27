@@ -1,0 +1,32 @@
+﻿@model IEnumerable<WebForum.UserDTO>
+@{
+    ViewBag.Title = "UserAdmin";
+}
+    <div class="table-container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>User Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.UserName </td>
+                        <td>
+                        @foreach (var role in user.Role)
+                        {
+                            <span> @role |</span>  
+                        }
+                        </td>
+                        <td>@Html.ActionLink("Add\\Remove Admin","AddRemoveAdmin","Admin", new {id = user.Id }, new { @class = "btn btn-info" })
+                        @Html.ActionLink("Delete User","DeleteUser","Admin", new {id = user.Id }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>

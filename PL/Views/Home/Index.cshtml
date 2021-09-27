@@ -1,0 +1,53 @@
+﻿@model Tuple<IEnumerable<WebForum.TopicControl>, IEnumerable<WebForum.MessageControl>>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Welcome to the Forum</h1>
+    <p class="lead">Welcome to the forum, use control panel to navigate the forum</p>
+    
+</div>
+
+<div class="row">
+    <div class="col-sm ">Last Topics</div>
+    <div class="col-sm ">Last Messages</div>
+
+</div>
+<div class="row">
+    <div class="col-sm">
+        @foreach (var topics in Model.Item1)
+        {
+            <div class="border border-dark">
+                <p>
+                    Date: @topics.Date
+                </p>
+                <p>
+                    Topic Name:@Html.ActionLink(" " + @topics.Name, "DisplayTopic", "Forum", new { id = topics.Id }, null)
+                </p>
+                <p>
+                    Author: @topics.UserName
+                </p>
+            </div>
+        }
+
+    </div>
+    <div class="col-sm">
+        @foreach (var messages in Model.Item2)
+        {
+        <div class="border border-dark">
+            <p>
+                Date: @messages.Date
+            </p>
+            <p>
+                Name: @messages.UserName
+            </p>
+            <p>
+                Text: @Html.ActionLink(" " + messages.Text, "DisplayTopic", "Forum", new { id = messages.TopicId }, null)
+            </p>
+        </div>
+        }
+        
+    </div>
+
+</div>

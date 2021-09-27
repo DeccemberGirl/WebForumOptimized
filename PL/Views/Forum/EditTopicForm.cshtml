@@ -1,0 +1,22 @@
+﻿@model WebForum.TopicControl
+@{
+    ViewBag.Title = "Edit Topic";
+}
+
+<h2 class="pt-4 pb-4">Topic Edit</h2>
+<div class="container border border-dark">
+    @using (Html.BeginForm("EditTopic", "Forum", FormMethod.Post, new { @class = "editTopicForm" }))
+    {
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.Id);
+        @Html.HiddenFor(m => m.Date);
+        @Html.HiddenFor(m => m.Messages);
+        @Html.HiddenFor(m => m.UserId);
+        @Html.HiddenFor(m => m.UserName);
+    <p><span>Edit Topic Name:</span></p>
+        <p> @Html.TextBoxFor(m => m.Name, new { @class = "name-input" })</p>
+<p><span>Edit Topic Message:</span></p>
+        <p>@Html.TextAreaFor(m => m.Text, new { @class = "topic-text-input", wrap = "off", rows = "20" })</p>
+    <input type="submit" class="btn btn-info mb-4" value="Edit">
+    }
+</div>

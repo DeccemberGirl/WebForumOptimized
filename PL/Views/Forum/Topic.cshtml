@@ -1,0 +1,22 @@
+﻿@model WebForum.TopicControl
+@{
+    ViewBag.Title = "Topic";
+}
+
+<h2 class="pt-4 pb-4">Topic</h2>
+@Html.Partial("~/Views/Forum/Partial/_TopicStart.cshtml", Model)
+<hr />
+@Html.Partial("~/Views/Forum/Partial/_TopicMessages.cshtml", Model.Messages.Messages)
+<ul class="pagination">
+    @for (int i = 1; i <= Model.Messages.TotalPages; i++)
+    {
+        <li class="@(i == Model.Messages.CurrentPage ? "page-item active" : "page-item")">
+            <a class="page-link" href="@Url.Action("DisplayTopic", new { currentPage = i })">@i</a>
+        </li>
+
+    }
+</ul>
+@if (User.Identity.IsAuthenticated)
+{
+@Html.Partial("~/Views/Forum/Partial/_AddMessageForm.cshtml", Model.NewMessage)
+}

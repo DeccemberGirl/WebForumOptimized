@@ -1,0 +1,38 @@
+﻿@model WebForum.PagedTopicModel
+@{
+    ViewBag.Title = "Topics";
+}
+
+<h2 class="pt-4 pb-4">All topics</h2>
+@Html.ActionLink("Add Topic", "AddTopicForm", "Forum", new { @class = "btn btn-info float-right" })
+@if (Model != null)
+{
+    <div class="column pt-5">
+        @foreach (var topic in Model.Topics)
+        {
+            <div class="col border border-dark mb-2" style="background-color: antiquewhite">
+
+                <p><h2>Topic Name:@Html.ActionLink(" " + @topic.Name, "DisplayTopic", "Forum", new { id = topic.Id }, null)</h2></p> <p>Topic Author: @topic.UserName</p> <p>
+                    Date: @topic.Date
+                </p> Number of messages:@(topic.MessageCount) <p>
+                    @if (User.IsInRole("admin"))
+                    {
+                        @Html.ActionLink("Delete Topic", "DeleteTopic", "Forum", new { topicId = topic.Id }, new { @class = "btn btn-info mt-2" });
+                    }
+                </p>
+
+            </div>
+        }
+    </div>
+    <ul class="pagination">
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="@(i == Model.CurrentPage ? "page-item active" : "page-item")">
+                <a class="page-link" href="@Url.Action("AllTopics", new { currentPage = i })">@i</a>
+            </li>
+
+        }
+    </ul>
+
+}
+

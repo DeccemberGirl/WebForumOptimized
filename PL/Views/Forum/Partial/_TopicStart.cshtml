@@ -1,0 +1,12 @@
+﻿@model WebForum.TopicControl
+@using Microsoft.AspNet.Identity;
+<h1 class="pt-4 pb-4">@Model.Name</h1>
+<div class="container border border-dark">
+    <p>Topic starter: @Model.UserName</p>
+    <p>@Model.Text</p>
+    @if (User.Identity.GetUserId() == Model.UserId)
+    {
+        @Html.ActionLink("Edit Topic", "EditTopicForm", "Forum", Model,
+             new { @class = "btn btn-info mb-2" })
+    }
+</div>

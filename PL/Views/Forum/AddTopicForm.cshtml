@@ -1,0 +1,17 @@
+﻿@model  WebForum.TopicFormViewModel
+@{
+    ViewBag.Title = "AddTopicForm";
+}
+
+<h2 class="pt-4 pb-4">Add new topic</h2>
+<div class="container border border-dark">
+@using (Html.BeginForm("AddTopic", "Forum", FormMethod.Post, new { @class = "topicForm" }))
+{
+    @Html.ValidationSummary()
+    <span>Enter Topic Name:</span>
+    <p>@Html.TextBoxFor(m => m.Name, new { @class = "name-input" })</p>
+    <span>Enter Topic Name:</span>
+    <p>@Html.TextAreaFor(m => m.Text, new { @class = "topic-text-input", wrap = "off", rows = "20" })</p>
+    <input type="submit" class="btn btn-info mb-4" value="Create Topic">
+}
+</div>
