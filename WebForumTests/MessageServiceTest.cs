@@ -3,6 +3,7 @@ using WebForum;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Collections.Generic;
+using DataLayer.Models;
 
 namespace WebForumTests
 {

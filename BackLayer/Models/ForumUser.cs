@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace WebForum
+namespace DataLayer.Models
 {
     public class ForumUser : IdentityUser
     {
