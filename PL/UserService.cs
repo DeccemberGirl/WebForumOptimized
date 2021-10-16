@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DataLayer.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;

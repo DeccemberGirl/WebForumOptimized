@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using DataLayer.Models;
 
-namespace WebForum
+namespace DataLayer.Models
 {
     /// <summary>
     /// Message entity

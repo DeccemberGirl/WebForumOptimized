@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using DataLayer.Models;
+using Microsoft.AspNet.Identity;
 
 namespace WebForum
 {

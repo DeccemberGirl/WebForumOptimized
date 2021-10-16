@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebForum", "PL\WebForum.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebForumTests", "WebForumTests\WebForumTests.csproj", "{86EAF34E-3C57-4BE8-BD20-1B2E45D8BAE4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "BackLayer\DataLayer.csproj", "{61FB1D0A-C4F3-4642-940E-5E171803BFB9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{86EAF34E-3C57-4BE8-BD20-1B2E45D8BAE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86EAF34E-3C57-4BE8-BD20-1B2E45D8BAE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86EAF34E-3C57-4BE8-BD20-1B2E45D8BAE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61FB1D0A-C4F3-4642-940E-5E171803BFB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61FB1D0A-C4F3-4642-940E-5E171803BFB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61FB1D0A-C4F3-4642-940E-5E171803BFB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61FB1D0A-C4F3-4642-940E-5E171803BFB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
