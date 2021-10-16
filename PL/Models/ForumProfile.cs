@@ -1,8 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DataLayer.Models
+namespace WebForum
 {
+    /// <summary>
+    /// Forum profile entity wich contains user info
+    /// </summary>
     public class ForumProfile
     {
         [Key]
@@ -13,5 +16,8 @@ namespace DataLayer.Models
         public string Address { get; set; }
 
         public virtual ForumUser ForumUser { get; set; }
+
+
+
     }
 }

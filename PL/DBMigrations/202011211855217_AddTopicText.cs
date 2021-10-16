@@ -1,8 +1,8 @@
-﻿using System;
-using System.Data.Entity.Migrations;
-
-namespace DataLayer.DBMigrations
+﻿namespace WebForum
 {
+    using System;
+    using System.Data.Entity.Migrations;
+    
     public partial class AddTopicText : DbMigration
     {
         public override void Up()

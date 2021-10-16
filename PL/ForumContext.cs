@@ -1,9 +1,8 @@
-﻿using DataLayer.Models;
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
-namespace DataLayer
+namespace WebForum
 {
     public class ForumContext : IdentityDbContext<ForumUser>
     {
@@ -21,6 +20,8 @@ namespace DataLayer
             modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
             modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
             modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
+            
+
         }
     }
 }

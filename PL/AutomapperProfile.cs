@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using DataLayer.Models;
 
 namespace WebForum
 {

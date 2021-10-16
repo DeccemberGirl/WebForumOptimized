@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DataLayer.Models
+namespace WebForum
 {
     /// <summary>
     /// Topic Entity

@@ -174,8 +174,7 @@
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
+  </ItemGroup><ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -200,7 +199,21 @@
     <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="ForumContext.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Topic.cs" />
+    <Compile Include="Models\ForumProfile.cs" />
+    <Compile Include="Models\ForumUser.cs" />
     <Compile Include="ForumUserManager.cs" />
+    <Compile Include="DBMigrations\202011211855217_AddTopicText.cs" />
+    <Compile Include="DBMigrations\202011211855217_AddTopicText.Designer.cs">
+      <DependentUpon>202011211855217_AddTopicText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBMigrations\202011232248071_FromMessageToMessages.cs" />
+    <Compile Include="DBMigrations\202011232248071_FromMessageToMessages.Designer.cs">
+      <DependentUpon>202011232248071_FromMessageToMessages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBMigrations\Configuration.cs" />
     <Compile Include="ForumProfileManager.cs" />
     <Compile Include="MessageRepository.cs" />
     <Compile Include="TopicRepository.cs" />
@@ -382,10 +395,12 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BackLayer\DataLayer.csproj">
-      <Project>{61FB1D0A-C4F3-4642-940E-5E171803BFB9}</Project>
-      <Name>DataLayer</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="DBMigrations\202011211855217_AddTopicText.resx">
+      <DependentUpon>202011211855217_AddTopicText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBMigrations\202011232248071_FromMessageToMessages.resx">
+      <DependentUpon>202011232248071_FromMessageToMessages.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
