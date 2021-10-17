@@ -88,7 +88,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BackLayer\DataLayer.csproj">
+    <ProjectReference Include="..\BackLayer\BackLayer.csproj">
+      <Project>{46583247-0B2A-43BC-AF5B-5C4FCBD7E4BC}</Project>
+      <Name>BackLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
       <Project>{61FB1D0A-C4F3-4642-940E-5E171803BFB9}</Project>
       <Name>DataLayer</Name>
     </ProjectReference>

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WebForum
+namespace BackLayer
 {
     /// <summary>
     /// Utility mapper extension

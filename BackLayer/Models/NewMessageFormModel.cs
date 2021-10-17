@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebForum
+namespace BackLayer.Models
 {
     /// <summary>
     /// Model for the New Message wich then added to the Topic

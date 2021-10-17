@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebForum
+namespace BackLayer.Models
 {
-    public class PagedMessagesModel
+    public class PagedTopicModel
     {
-        public IEnumerable<MessageControl> Messages { get; set; }
+        public IEnumerable<TopicControl> Topics { get; set; }
         public int TotalPages { get; set; }
         public int CurrentPage { get; set; }
     }

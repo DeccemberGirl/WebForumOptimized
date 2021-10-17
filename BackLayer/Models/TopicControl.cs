@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace WebForum
+namespace BackLayer.Models
 {
     public class TopicControl
     {

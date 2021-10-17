@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BackLayer.Models;
 using DataLayer.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -8,7 +9,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace WebForum
+namespace BackLayer.Servises
 {
     /// <summary>
     /// User service

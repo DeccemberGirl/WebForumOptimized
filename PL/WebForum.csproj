@@ -181,36 +181,16 @@
   <ItemGroup>
     <Compile Include="AutomapperProfile.cs" />
     <Compile Include="BLLModule.cs" />
-    <Compile Include="Models\MessageControl.cs" />
-    <Compile Include="Models\TopicControl.cs" />
-    <Compile Include="Models\UserControl.cs" />
-    <Compile Include="OperationDetails.cs" />
-    <Compile Include="MapperExtension.cs" />
-    <Compile Include="Models\NewMessageFormModel.cs" />
-    <Compile Include="Models\PagedMessagesModel.cs" />
-    <Compile Include="Models\PagedTopicModel.cs" />
-    <Compile Include="Models\TopicFormViewModel.cs" />
-    <Compile Include="MessageService.cs" />
-    <Compile Include="TopicService.cs" />
-    <Compile Include="UserRoleService.cs" />
-    <Compile Include="UserService.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="ForumUserManager.cs" />
-    <Compile Include="ForumProfileManager.cs" />
-    <Compile Include="MessageRepository.cs" />
-    <Compile Include="TopicRepository.cs" />
-    <Compile Include="UnitOfWork.cs" />
     <Compile Include="ServiceModule.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -382,8 +362,12 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BackLayer\DataLayer.csproj">
-      <Project>{61FB1D0A-C4F3-4642-940E-5E171803BFB9}</Project>
+    <ProjectReference Include="..\BackLayer\BackLayer.csproj">
+      <Project>{46583247-0B2A-43BC-AF5B-5C4FCBD7E4BC}</Project>
+      <Name>BackLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+      <Project>{61fb1d0a-c4f3-4642-940e-5e171803bfb9}</Project>
       <Name>DataLayer</Name>
     </ProjectReference>
   </ItemGroup>

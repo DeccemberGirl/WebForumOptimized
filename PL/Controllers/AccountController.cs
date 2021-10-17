@@ -1,4 +1,7 @@
-﻿using Microsoft.Owin.Security;
+﻿using BackLayer;
+using BackLayer.Models;
+using BackLayer.Servises;
+using Microsoft.Owin.Security;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;

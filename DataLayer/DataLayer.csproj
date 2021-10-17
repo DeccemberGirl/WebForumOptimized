@@ -69,6 +69,10 @@
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Topic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Soureses\Managers\ForumProfileManager.cs" />
+    <Compile Include="Soureses\Managers\ForumUserManager.cs" />
+    <Compile Include="Soureses\Repositorys\MessageRepository.cs" />
+    <Compile Include="Soureses\Repositorys\TopicRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -82,5 +86,6 @@
       <DependentUpon>202011232248071_FromMessageToMessages.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

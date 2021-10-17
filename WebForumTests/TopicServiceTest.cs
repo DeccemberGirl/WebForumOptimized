@@ -5,6 +5,12 @@ using Moq;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DataLayer.Models;
+using DataLayer.Sourses.Repositorys;
+using BackLayer.Models;
+using BackLayer;
+using BackLayer.Servises;
+
 namespace WebForumTests
 {
     [TestClass]

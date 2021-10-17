@@ -1,4 +1,4 @@
-﻿namespace WebForum
+﻿namespace BackLayer
 {
     /// <summary>
     /// Holds information about operations status

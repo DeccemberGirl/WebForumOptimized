@@ -1,4 +1,5 @@
-﻿using Ninject.Modules;
+﻿using BackLayer;
+using Ninject.Modules;
 
 namespace WebForum
 {

@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
+using BackLayer;
+using BackLayer.Models;
 using DataLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebForum
+namespace BackLayer.Servises
 {
     /// <summary>
     /// Service for Messages
@@ -55,12 +57,12 @@ namespace WebForum
         /// <returns></returns>
         public async Task AddAsync(string userId, string userName, string text, int topicId)
         {
-            if (String.IsNullOrEmpty(userId) || String.IsNullOrEmpty(userName) || String.IsNullOrEmpty(text) || topicId == 0)
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(text) || topicId == 0)
                 return;
             var inputMessageDTO = Create(userId, userName, text);
             var message = _mapper.Map<MessageControl, Message>(inputMessageDTO);
             message.ForumUser = await _unitOfWork.UserManager.FindByIdAsync(userId);
-            await _unitOfWork.MessageRepository.AddAsyncMessageToTopic(message,topicId);
+            await _unitOfWork.MessageRepository.AddAsyncMessageToTopic(message, topicId);
             await _unitOfWork.SaveAsync();
         }
         /// <summary>

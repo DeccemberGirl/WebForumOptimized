@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WebForum
+namespace BackLayer.Models
 {
     public class UserControl
     {

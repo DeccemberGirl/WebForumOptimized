@@ -1,7 +1,7 @@
 ﻿using DataLayer.Models;
 using Microsoft.AspNet.Identity;
 
-namespace WebForum
+namespace DataLayer.Sourses.Managers
 {
     public class ForumUserManager:UserManager<ForumUser>
     {

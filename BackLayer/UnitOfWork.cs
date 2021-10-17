@@ -1,10 +1,13 @@
-﻿using DataLayer.Models;
+﻿using DataLayer;
+using DataLayer.Models;
+using DataLayer.Sourses.Managers;
+using DataLayer.Sourses.Repositorys;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Threading.Tasks;
 
-namespace WebForum
+namespace BackLayer
 {
     /// <summary>
     /// Unit of work, wich is point of connection to DAL

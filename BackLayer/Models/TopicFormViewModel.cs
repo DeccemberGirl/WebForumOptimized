@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebForum
+namespace BackLayer.Models
 {
     /// <summary>
     /// Topic form wich used for adding a new Topic

@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
+using BackLayer.Models;
+using Catel.Services;
 using DataLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebForum
+namespace BackLayer.Servises
 {
     /// <summary>
     /// Service for Topics

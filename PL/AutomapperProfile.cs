@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BackLayer.Models;
 using DataLayer.Models;
 
 namespace WebForum

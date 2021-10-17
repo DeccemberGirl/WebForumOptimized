@@ -1,12 +1,11 @@
-﻿using DataLayer;
-using DataLayer.Models;
+﻿using DataLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebForum
+namespace DataLayer.Sourses.Managers
 {
     /// <summary>
     /// Forum profile repository

@@ -4,6 +4,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Collections.Generic;
 using DataLayer.Models;
+using DataLayer.Sourses.Repositorys;
+using BackLayer.Models;
+using BackLayer;
+using BackLayer.Servises;
 
 namespace WebForumTests
 {
