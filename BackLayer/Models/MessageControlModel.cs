@@ -2,7 +2,7 @@
 
 namespace BackLayer.Models
 {
-    public class MessageControl
+    public class MessageControlModel
     {
         [Required]
         public int Id { get; set; }

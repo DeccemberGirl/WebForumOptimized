@@ -21,13 +21,13 @@ namespace BackLayer.Servises
             _mapper = mapper;
             _unitOfWork = db;
         }
-        public IEnumerable<MessageControl> GetAll()
+        public IEnumerable<MessageControlModel> GetAll()
         {
             var entities = _unitOfWork.MessageRepository.FindAll();
-            var result = _mapper.MapList<Message, MessageControl>(entities);
+            var result = _mapper.MapList<Message, MessageControlModel>(entities);
             return result;
         }
-        public PagedMessagesModel GetPagedMessages(IEnumerable<MessageControl> messages, int pageNumber)
+        public PagedMessagesModel GetPagedMessages(IEnumerable<MessageControlModel> messages, int pageNumber)
         {
             var numberOfMessages = messages.Count();
             var numberOfPages = (int)Math.Ceiling((double)numberOfMessages / 6);
@@ -41,9 +41,9 @@ namespace BackLayer.Servises
             return pageModel;
         }
 
-        public MessageControl Create(string userId, string userName, string text)
+        public MessageControlModel Create(string userId, string userName, string text)
         {
-            var messageDTO = new MessageControl { Date = DateTime.Now.ToString(), UserForumId = userId, UserName = userName, Text = text };
+            var messageDTO = new MessageControlModel { Date = DateTime.Now.ToString(), UserForumId = userId, UserName = userName, Text = text };
             return messageDTO;
         }
 
@@ -60,7 +60,7 @@ namespace BackLayer.Servises
             if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(text) || topicId == 0)
                 return;
             var inputMessageDTO = Create(userId, userName, text);
-            var message = _mapper.Map<MessageControl, Message>(inputMessageDTO);
+            var message = _mapper.Map<MessageControlModel, Message>(inputMessageDTO);
             message.ForumUser = await _unitOfWork.UserManager.FindByIdAsync(userId);
             await _unitOfWork.MessageRepository.AddAsyncMessageToTopic(message, topicId);
             await _unitOfWork.SaveAsync();
@@ -82,11 +82,11 @@ namespace BackLayer.Servises
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        public async Task UpdateAsync(MessageControl message)
+        public async Task UpdateAsync(MessageControlModel message)
         {
             if (message == null)
                 return;
-            await _unitOfWork.MessageRepository.Update(_mapper.Map<MessageControl, Message>(message));
+            await _unitOfWork.MessageRepository.Update(_mapper.Map<MessageControlModel, Message>(message));
             await _unitOfWork.SaveAsync();
         }
     }

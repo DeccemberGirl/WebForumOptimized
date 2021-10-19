@@ -9,7 +9,7 @@ namespace BackLayer.Models
 {
     public class PagedMessagesModel
     {
-        public IEnumerable<MessageControl> Messages { get; set; }
+        public IEnumerable<MessageControlModel> Messages { get; set; }
         public int TotalPages { get; set; }
         public int CurrentPage { get; set; }
     }

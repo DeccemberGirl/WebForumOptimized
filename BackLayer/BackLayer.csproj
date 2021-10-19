@@ -126,7 +126,7 @@
   <ItemGroup>
     <Compile Include="MapperExtension.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\MessageControl.cs" />
+    <Compile Include="Models\MessageControlModel.cs" />
     <Compile Include="Models\NewMessageFormModel.cs" />
     <Compile Include="Models\PagedMessagesModel.cs" />
     <Compile Include="Models\PagedTopicModel.cs" />

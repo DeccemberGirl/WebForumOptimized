@@ -70,7 +70,7 @@ namespace BackLayer.Servises
             {
                 return null;
             }
-            var messages = _mapper.MapList<Message, MessageControl>(entity.Messages);
+            var messages = _mapper.MapList<Message, MessageControlModel>(entity.Messages);
             var pagedMessage = _messageService.GetPagedMessages(messages, pageNumber);
             var result = _mapper.Map<Topic, TopicControl>(entity);
             result.Messages = pagedMessage;
