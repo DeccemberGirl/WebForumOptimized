@@ -1,7 +1,4 @@
-﻿using BackLayer;
-using Ninject.Modules;
-
-namespace WebForum
+﻿namespace WebForum
 {
     /// <summary>
     /// Ninject module for registering needed dependencies for BLL

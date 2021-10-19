@@ -1,9 +1,4 @@
-﻿using BackLayer.Servises;
-using Microsoft.Owin.Security;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-
-namespace WebForum
+﻿namespace WebForum
 {
     /// <summary>
     /// Controller for admin panel
