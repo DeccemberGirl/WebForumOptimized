@@ -1,12 +1,9 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using DAL.Entities;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace WebForum
+namespace DAL.Repositories
 {
     /// <summary>
     /// Message repository
@@ -14,23 +11,34 @@ namespace WebForum
     public class MessageRepository
     {
         readonly private ForumContext _context;
+
+        /// <summary>
+        /// Creates a new instance of the <see cref="MessageRepository" />
+        /// </summary>
+        /// <param name="context">Forum context object</param>
         public MessageRepository(ForumContext context)
         {
             _context = context;
         }
+
+        /// <summary>
+        /// Adds message to the repository 
+        /// </summary>
+        /// <param name="entity">Message object</param>
+        /// <returns>Message Id</returns>
         public async Task<int> AddAsync(Message entity)
         {
             _context.Messages.Add(entity);
             await _context.SaveChangesAsync();
             return entity.Id;
-
         }
+
         /// <summary>
-        /// Add message entity to specified topic
+        /// Adds message to topic 
         /// </summary>
-        /// <param name="entity"> Message entity </param>
-        /// <param name="id"> Topic Id</param>
-        /// <returns></returns>
+        /// <param name="entity">Message object</param>
+        /// <param name="id">Topic Id</param>
+        /// <returns>Message Id if the operation succeded</returns>
         public async Task<int> AddAsyncMessageToTopic(Message entity, int id)
         {
             var topic = _context.Topics.First(x => x.Id == id);
@@ -38,21 +46,31 @@ namespace WebForum
             _context.Messages.Add(entity);
             await _context.SaveChangesAsync();
             return entity.Id;
-
         }
 
+        /// <summary>
+        /// Deletes the message from the repository
+        /// </summary>
+        /// <param name="entity">Message object</param>
         public void Delete(Message entity)
         {
             _context.Messages.Remove(entity);
         }
 
+        /// <summary>
+        /// Deletes the message from the repository by its id
+        /// </summary>
+        /// <param name="id">Message Id</param>
         public async Task DeleteByIdAsync(int id)
         {
             var entity = await GetByIdAsync(id);
             _context.Messages.Remove(entity);
-
-
         }
+
+        /// <summary>
+        /// Deletes all messages from the user
+        /// </summary>
+        /// <param name="userId">User Id</param>
         public void DeleteAllUserMessages(string userId)
         {
             var userMessages = _context.Messages.Where(x => x.ForumUser.Id == userId);
@@ -60,6 +78,10 @@ namespace WebForum
             _context.SaveChanges();
         }
 
+        /// <summary>
+        /// Gets all objects of the collection from the repository
+        /// </summary>
+        /// <returns>Collection of messages</returns>
         public IQueryable<Message> FindAll()
         {
             _context.Messages.Include("ForumUser");
@@ -67,13 +89,20 @@ namespace WebForum
             return _context.Messages;
         }
 
+        /// <summary>
+        /// Gets the concrete message from the repository by its id
+        /// </summary>
+        /// <param name="id">Entity Id</param>
+        /// <returns>Collection of messages</returns>
         public async Task<Message> GetByIdAsync(int id)
         {
-
             return await _context.Messages.SingleAsync(x => x.Id == id);
-
         }
 
+        /// <summary>
+        /// Updates the message info in the repository
+        /// </summary>
+        /// <param name="entity">Message object</param>
         public async Task Update(Message entity)
         {
             var foundEntity =  await GetByIdAsync(entity.Id);
