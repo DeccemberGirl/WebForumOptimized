@@ -63,7 +63,21 @@
     <Compile Include="Entities\Message.cs" />
     <Compile Include="Entities\Topic.cs" />
     <Compile Include="ForumContext.cs" />
+    <Compile Include="Identity\ForumRoleManager.cs" />
+    <Compile Include="Identity\ForumUserManager.cs" />
+    <Compile Include="Repositories\ForumProfileManager.cs" />
+    <Compile Include="Identity\ForumRole.cs" />
+    <Compile Include="Migrations\202011211855217_AddTopicText.cs" />
+    <Compile Include="Migrations\202011211855217_AddTopicText.Designer.cs">
+      <DependentUpon>202011211855217_AddTopicText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011232248071_FromMessageToMessages.cs" />
+    <Compile Include="Migrations\202011232248071_FromMessageToMessages.Designer.cs">
+      <DependentUpon>202011232248071_FromMessageToMessages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Interfaces\IForumProfileManager.cs" />
     <Compile Include="Repositories\Interfaces\IMessageRepository.cs" />
     <Compile Include="Repositories\Interfaces\IRepository.cs" />
     <Compile Include="Repositories\Interfaces\ITopicRepository.cs" />
@@ -74,7 +88,14 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202011211855217_AddTopicText.resx">
+      <DependentUpon>202011211855217_AddTopicText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011232248071_FromMessageToMessages.resx">
+      <DependentUpon>202011232248071_FromMessageToMessages.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
