@@ -200,17 +200,6 @@
     <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="ForumUserManager.cs" />
-    <Compile Include="DBMigrations\202011211855217_AddTopicText.cs" />
-    <Compile Include="DBMigrations\202011211855217_AddTopicText.Designer.cs">
-      <DependentUpon>202011211855217_AddTopicText.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DBMigrations\202011232248071_FromMessageToMessages.cs" />
-    <Compile Include="DBMigrations\202011232248071_FromMessageToMessages.Designer.cs">
-      <DependentUpon>202011232248071_FromMessageToMessages.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DBMigrations\Configuration.cs" />
-    <Compile Include="ForumProfileManager.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="ServiceModule.cs" />
     <Compile Include="Global.asax.cs">
@@ -387,14 +376,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="DBMigrations\202011211855217_AddTopicText.resx">
-      <DependentUpon>202011211855217_AddTopicText.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DBMigrations\202011232248071_FromMessageToMessages.resx">
-      <DependentUpon>202011232248071_FromMessageToMessages.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

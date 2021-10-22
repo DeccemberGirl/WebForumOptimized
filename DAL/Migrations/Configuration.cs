@@ -1,9 +1,7 @@
 ﻿namespace WebForum
 {
-    using System;
-    using System.Data.Entity;
+    using DAL;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ForumContext>
     {
@@ -12,7 +10,7 @@
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(WebForum.ForumContext context)
+        protected override void Seed(ForumContext context)
         {
             //  This method will be called after migrating to the latest version.
 
