@@ -174,7 +174,8 @@
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
-  </ItemGroup><ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -200,10 +201,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="ForumContext.cs" />
-    <Compile Include="Models\Message.cs" />
-    <Compile Include="Models\Topic.cs" />
-    <Compile Include="Models\ForumProfile.cs" />
-    <Compile Include="Models\ForumUser.cs" />
     <Compile Include="ForumUserManager.cs" />
     <Compile Include="DBMigrations\202011211855217_AddTopicText.cs" />
     <Compile Include="DBMigrations\202011211855217_AddTopicText.Designer.cs">
