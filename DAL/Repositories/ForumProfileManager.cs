@@ -1,4 +1,5 @@
 ﻿using DAL.Entities;
+using DAL.Repositories.Interfaces;
 using System.Threading.Tasks;
 
 namespace DAL.Repositories
@@ -6,7 +7,7 @@ namespace DAL.Repositories
     /// <summary>
     /// Forum profile repository
     /// </summary>
-    public class ForumProfileManager 
+    public class ForumProfileManager : IForumProfileManager
     {
         /// <summary>
         /// Forum context
