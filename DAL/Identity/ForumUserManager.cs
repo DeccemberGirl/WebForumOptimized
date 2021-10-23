@@ -1,7 +1,7 @@
 ﻿using DAL.Entities;
 using Microsoft.AspNet.Identity;
 
-namespace WebForum
+namespace DAL.Identity
 {
     /// <summary>
     /// Forum user manager entity

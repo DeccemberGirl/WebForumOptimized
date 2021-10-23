@@ -1,4 +1,5 @@
 ﻿using DAL.Entities;
+using DAL.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,7 +11,7 @@ namespace DAL.Repositories
     /// <summary>
     /// Topic repository
     /// </summary>
-    public class TopicRepository 
+    public class TopicRepository : ITopicRepository
     {
         readonly private ForumContext _context;
 

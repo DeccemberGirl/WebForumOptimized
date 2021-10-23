@@ -1,4 +1,5 @@
 ﻿using DAL.Entities;
+using DAL.Repositories.Interfaces;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace DAL.Repositories
     /// <summary>
     /// Message repository
     /// </summary>
-    public class MessageRepository
+    public class MessageRepository : IMessageRepository
     {
         readonly private ForumContext _context;
 
