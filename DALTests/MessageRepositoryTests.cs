@@ -2,10 +2,8 @@ using DAL;
 using DAL.Entities;
 using DAL.Repositories;
 using DAL.Repositories.Interfaces;
-using NSubstitute;
 using NUnit.Framework;
-using System;
-using System.Threading.Tasks;
+using System.Linq;
 
 namespace DALTests
 {
@@ -19,12 +17,13 @@ namespace DALTests
         [SetUp]
         public void Setup()
         {
-            _expectedMessageId = 1;
             _topicId = 1;
-            _message = new Message() { Id = 1 };
-            _messageRepository = new MessageRepository(new ForumContext());
-           // _messageRepository.AddAsync(_message).Returns(1);
-            _messageRepository.AddAsyncMessageToTopic(_message, _topicId).Returns(1);
+            _message = new Message() { Id = 2 };
+            var forumContext = new ForumContext();
+            _messageRepository = new MessageRepository(forumContext);
+
+            var lastId = forumContext.Messages.Select(x => x.Id).Max();
+            _expectedMessageId = lastId + 1;
         }
 
         [Test]
@@ -32,7 +31,7 @@ namespace DALTests
         {
             //Act
             var actualId = _messageRepository.AddAsync(_message).Result;
-
+            
             //Assert
             Assert.AreEqual(_expectedMessageId, actualId);
         }
@@ -45,6 +44,12 @@ namespace DALTests
 
             //Assert
             Assert.AreEqual(_expectedMessageId, actualId);
+        }
+
+        [TearDown]
+        public void CleanUp()
+        {
+            _messageRepository.Delete(_message);
         }
     }
 }
