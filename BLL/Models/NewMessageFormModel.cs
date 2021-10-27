@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebForum
+namespace BLL.Models
 {
     /// <summary>
     /// Model for the New Message wich then added to the Topic
@@ -9,7 +9,7 @@ namespace WebForum
     {
         [Required]
         public int TopicId { get; set; }
-        [Required(ErrorMessage ="Message should be filled")]
+        [Required(ErrorMessage = "Message should be filled")]
         public string Text { get; set; }
     }
 }

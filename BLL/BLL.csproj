@@ -60,6 +60,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\MessageDTO.cs" />
+    <Compile Include="DTO\TopicDTO.cs" />
+    <Compile Include="DTO\UserDTO.cs" />
+    <Compile Include="Models\NewMessageFormModel.cs" />
+    <Compile Include="Models\PagedMessagesModel.cs" />
+    <Compile Include="Models\PagedTopicModel.cs" />
+    <Compile Include="Models\TopicFormViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

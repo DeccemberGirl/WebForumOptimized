@@ -202,15 +202,8 @@
   <ItemGroup>
     <Compile Include="AutomapperProfile.cs" />
     <Compile Include="BLLModule.cs" />
-    <Compile Include="Models\MessageControl.cs" />
-    <Compile Include="Models\TopicControl.cs" />
-    <Compile Include="Models\UserControl.cs" />
     <Compile Include="OperationDetails.cs" />
     <Compile Include="MapperExtension.cs" />
-    <Compile Include="Models\NewMessageFormModel.cs" />
-    <Compile Include="Models\PagedMessagesModel.cs" />
-    <Compile Include="Models\PagedTopicModel.cs" />
-    <Compile Include="Models\TopicFormViewModel.cs" />
     <Compile Include="MessageService.cs" />
     <Compile Include="TopicService.cs" />
     <Compile Include="UserRoleService.cs" />

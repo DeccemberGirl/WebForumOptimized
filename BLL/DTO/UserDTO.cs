@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
 
-namespace WebForum
+namespace BLL.DTO
 {
-    public class UserControl
+    /// <summary>
+    /// UserDTO for ForumUser entity (asp.net Identity)
+    /// </summary>
+    public class UserDTO
     {
         public string Id { get; set; }
         public string Email { get; set; }
@@ -10,6 +13,6 @@ namespace WebForum
         public string UserName { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
-        public List <string> Role { get; set; }
+        public List<string> Role { get; set; }
     }
 }

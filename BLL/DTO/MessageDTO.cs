@@ -1,8 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebForum
+namespace BLL.DTO
 {
-    public class MessageControl
+    /// <summary>
+    /// DTO for message Entity
+    /// </summary>
+    public class MessageDTO
     {
         [Required]
         public int Id { get; set; }

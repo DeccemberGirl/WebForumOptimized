@@ -1,10 +1,13 @@
-﻿
+﻿using BLL.Models;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace WebForum
+namespace BLL.DTO
 {
-    public class TopicControl
+    /// <summary>
+    /// TopicDTO for Topic entity
+    /// </summary>
+    public class TopicDTO
     {
         [Required]
         public int Id { get; set; }
