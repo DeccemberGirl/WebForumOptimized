@@ -85,6 +85,7 @@
   <ItemGroup>
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\ForumProfile.cs" />
+    <Compile Include="Entities\ForumRole.cs" />
     <Compile Include="Entities\ForumUser.cs" />
     <Compile Include="Entities\Message.cs" />
     <Compile Include="Entities\Topic.cs" />
@@ -93,7 +94,6 @@
     <Compile Include="Identity\ForumUserManager.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Repositories\ForumProfileManager.cs" />
-    <Compile Include="Identity\ForumRole.cs" />
     <Compile Include="Migrations\202011211855217_AddTopicText.cs" />
     <Compile Include="Migrations\202011211855217_AddTopicText.Designer.cs">
       <DependentUpon>202011211855217_AddTopicText.cs</DependentUpon>

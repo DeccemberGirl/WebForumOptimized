@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace DAL.Identity
+namespace DAL.Entities
 {
-    /// <summary>
-    /// Basic forum role entity
-    /// </summary>
     public class ForumRole : IdentityRole
     {
-
+        
     }
 }
