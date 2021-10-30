@@ -56,6 +56,7 @@ namespace DAL.Repositories
         public void Delete(Message entity)
         {
             _context.Messages.Remove(entity);
+            _context.SaveChanges();
         }
 
         /// <summary>
@@ -66,6 +67,7 @@ namespace DAL.Repositories
         {
             var entity = await GetByIdAsync(id);
             _context.Messages.Remove(entity);
+            await _context.SaveChangesAsync();
         }
 
         /// <summary>
