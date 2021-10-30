@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using DAL.Entities;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DAL.Identity

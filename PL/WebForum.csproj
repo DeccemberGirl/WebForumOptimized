@@ -200,14 +200,10 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutomapperProfile.cs" />
     <Compile Include="BLLModule.cs" />
     <Compile Include="OperationDetails.cs" />
-    <Compile Include="MapperExtension.cs" />
     <Compile Include="MessageService.cs" />
-    <Compile Include="TopicService.cs" />
     <Compile Include="UserRoleService.cs" />
-    <Compile Include="UserService.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />

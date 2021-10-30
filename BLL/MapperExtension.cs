@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WebForum
+namespace BLL
 {
     /// <summary>
     /// Utility mapper extension

@@ -1,22 +1,26 @@
 ﻿using AutoMapper;
+using BLL.DTO;
+using BLL.Infrastructure;
+using BLL.Services.Interfaces;
+using DAL;
+using DAL.Entities;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace WebForum
+namespace BLL.Services
 {
     /// <summary>
     /// User service
     /// </summary>
-    public class UserService
+    public class UserService : IUserService
     {
-        private readonly UnitOfWork _database;
+        private readonly IUnitOfWork _database;
         private readonly IMapper _mapper;
-        public UserService(UnitOfWork uow, IMapper mapper)
+        public UserService(IUnitOfWork uow, IMapper mapper)
         {
             _database = uow;
             _mapper = mapper;
@@ -26,7 +30,7 @@ namespace WebForum
         /// </summary>
         /// <param name="userDto"></param>
         /// <returns></returns>
-        public async Task<OperationDetails> Create(UserControl userDto)
+        public async Task<OperationDetails> Create(UserDTO userDto)
         {
             ForumUser user = await _database.UserManager.FindByEmailAsync(userDto.Email);
             if (user == null)
@@ -77,7 +81,7 @@ namespace WebForum
             }
         }
         
-        public async Task<ClaimsIdentity> Authenticate(UserControl userDto)
+        public async Task<ClaimsIdentity> Authenticate(UserDTO userDto)
         {
             ClaimsIdentity claim = null;
             
@@ -90,24 +94,24 @@ namespace WebForum
         }
 
        
-        public async Task SetInitialData(UserControl adminDto, List<string> roles)
+        public async Task SetInitialData(UserDTO adminDto, List<string> roles)
         {
             foreach (string roleName in roles)
             {
                 var role = await _database.RoleManager.FindByNameAsync(roleName);
                 if (role == null)
                 {
-                    role = new IdentityRole { Name = roleName };
+                    role = new ForumRole { Name = roleName };
                     await _database.RoleManager.CreateAsync(role);
                 }
             }
             await Create(adminDto);
         }
-        public IEnumerable<UserControl> GetAllUsers()
+        public IEnumerable<UserDTO> GetAllUsers()
         {
             
             var users = _database.UserManager.Users;
-            var outputlist = _mapper.MapList<ForumUser, UserControl>(users);
+            var outputlist = _mapper.MapList<ForumUser, UserDTO>(users);
             foreach(var user in outputlist)
             {
                 user.Role = (List<string>)_database.UserManager.GetRoles(user.Id);
