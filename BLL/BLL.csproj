@@ -60,10 +60,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\Interfaces\IMessageDTOBuilder.cs" />
+    <Compile Include="Builders\Interfaces\INewMessageFactory.cs" />
+    <Compile Include="Builders\Interfaces\ITopicBuilder.cs" />
+    <Compile Include="Builders\MessageDTOBuilder.cs" />
+    <Compile Include="Builders\MessageFactory.cs" />
+    <Compile Include="Builders\TopicBuilder.cs" />
     <Compile Include="DTO\MessageDTO.cs" />
     <Compile Include="DTO\TopicDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
-    <Compile Include="ID\BLLModule.cs" />
+    <Compile Include="DI\BLLModule.cs" />
     <Compile Include="Models\NewMessageFormModel.cs" />
     <Compile Include="Models\PagedMessagesModel.cs" />
     <Compile Include="Models\PagedTopicModel.cs" />
