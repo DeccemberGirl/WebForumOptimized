@@ -51,7 +51,7 @@ namespace DALTests.RepositoriesTests
         }
 
         [Test]
-        public void Delete_DeletesMessagesFromContextUsingMessageEntity()
+        public void Delete_DeletesMessageFromContextUsingMessageEntity()
         {
             //Act
             _messageRepository.Delete(_message);
@@ -61,11 +61,33 @@ namespace DALTests.RepositoriesTests
         }
 
         [Test]
-        public async Task DeleteByIdAsync_DeletesMessagesFromContextUsingMessageId()
+        public async Task DeleteByIdAsync_DeletesMessageFromContextUsingMessageId()
         {
             //Act
             await _messageRepository.DeleteByIdAsync(actualId);
             
+            //Assert
+            Assert.Throws<AggregateException>(() => { var mess = _messageRepository.GetByIdAsync(actualId).Result; });
+        }
+
+        [Test]
+        public void DeleteAllUserMessages_DeletesUserMessagesByUserId()
+        {
+            //Arrange
+            var random = DateTime.Now.Millisecond;
+            var testUser = new ForumUser()
+            {
+                Email = "email@gmail.com" + random.ToString(),
+                EmailConfirmed = true,
+                PasswordHash = "1234562qwerty" + random.ToString(),
+                UserName = random.ToString() + "TestUserName"
+            };
+            Message message = new Message() { Id = 55, Text = "some text", ForumUser=testUser };
+            actualId = _messageRepository.AddAsync(message).Result;
+
+            //Act
+            _messageRepository.DeleteAllUserMessages(testUser.Id);
+
             //Assert
             Assert.Throws<AggregateException>(() => { var mess = _messageRepository.GetByIdAsync(actualId).Result; });
         }
@@ -97,10 +119,10 @@ namespace DALTests.RepositoriesTests
             //Act
             _message.Text = "test text";
             await _messageRepository.Update(_message);
-            var newMessageText = _messageRepository.GetByIdAsync(actualId).Result.Text;
+            string newMessageText = _messageRepository.GetByIdAsync(actualId).Result.Text;
 
             //Assert
-            Assert.AreEqual(_message.Text, "test text");
+            Assert.AreEqual("test text", newMessageText);
         }
 
         [TearDown]
