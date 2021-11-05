@@ -43,6 +43,7 @@ namespace DAL.Repositories
         public void Delete(Topic entity)
         {
             _context.Topics.Remove(entity);
+            _context.SaveChanges();
         }
 
         /// <summary>
@@ -55,6 +56,7 @@ namespace DAL.Repositories
             var allTopicsById = _context.Messages.Where(x => x.Topic.Id == id);
             _context.Messages.RemoveRange(allTopicsById);
             _context.Topics.Remove(entity);
+            await _context.SaveChangesAsync();
         }
 
         /// <summary>
