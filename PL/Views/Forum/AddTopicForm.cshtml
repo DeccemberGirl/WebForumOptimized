@@ -1,17 +1,25 @@
-﻿@model  WebForum.TopicFormViewModel
-@{
-    ViewBag.Title = "AddTopicForm";
+﻿@model  BLL.Models.TopicFormViewModel
+@{ ViewBag.Title = "AddTopicForm"; }
+
+@section Styles {
+    <link href='@Url.Content("~/Content/signin_signup.css")' rel='stylesheet' type='text/css' />
 }
 
-<h2 class="pt-4 pb-4">Add new topic</h2>
-<div class="container border border-dark">
-@using (Html.BeginForm("AddTopic", "Forum", FormMethod.Post, new { @class = "topicForm" }))
-{
-    @Html.ValidationSummary()
-    <span>Enter Topic Name:</span>
-    <p>@Html.TextBoxFor(m => m.Name, new { @class = "name-input" })</p>
-    <span>Enter Topic Name:</span>
-    <p>@Html.TextAreaFor(m => m.Text, new { @class = "topic-text-input", wrap = "off", rows = "20" })</p>
-    <input type="submit" class="btn btn-info mb-4" value="Create Topic">
-}
+<div class="parallax block">
+    <div class="container" style="width:1100px; background-color:rgb(224, 224, 224); height: auto; min-height:100vh; padding-top:100px; padding-bottom: 50px; font-family: 'Source Sans Pro', sans-serif;">
+        <div class="container" style="padding-top: 30px; padding-left: 150px; padding-right:150px;">
+            <h2 class="pt-4 pb-4" style="text-align: center;">Add new topic</h2>
+            <div class="container border" style="text-align: center;">
+                @using (Html.BeginForm("AddTopic", "Forum", FormMethod.Post, new { @class = "topicForm" }))
+                {
+                    @Html.ValidationSummary()
+                    <span>Topic Name:</span>
+                    <p>@Html.TextBoxFor(m => m.Name, new { @class = "name-input" })</p>
+                    <span>Description:</span>
+                    <p>@Html.TextAreaFor(m => m.Text, new { @class = "topic-text-input", wrap = "off", rows = "10", cols = "50" })</p>
+                    <input type="submit" class="btn btn-success mb-4" value="Create Topic">
+                }
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,22 +1,32 @@
-﻿@model WebForum.TopicControl
+﻿@model BLL.DTO.TopicDTO
 @{
     ViewBag.Title = "Edit Topic";
 }
 
-<h2 class="pt-4 pb-4">Topic Edit</h2>
-<div class="container border border-dark">
-    @using (Html.BeginForm("EditTopic", "Forum", FormMethod.Post, new { @class = "editTopicForm" }))
-    {
-        @Html.ValidationSummary()
-        @Html.HiddenFor(m => m.Id);
-        @Html.HiddenFor(m => m.Date);
-        @Html.HiddenFor(m => m.Messages);
-        @Html.HiddenFor(m => m.UserId);
-        @Html.HiddenFor(m => m.UserName);
-    <p><span>Edit Topic Name:</span></p>
-        <p> @Html.TextBoxFor(m => m.Name, new { @class = "name-input" })</p>
-<p><span>Edit Topic Message:</span></p>
-        <p>@Html.TextAreaFor(m => m.Text, new { @class = "topic-text-input", wrap = "off", rows = "20" })</p>
-    <input type="submit" class="btn btn-info mb-4" value="Edit">
-    }
+@section Styles {    
+    <link href='@Url.Content("~/Content/signin_signup.css")' rel='stylesheet' type='text/css' />
+}
+
+<div class="parallax block">
+    <div class="container" style="width:1100px; background-color:rgb(224, 224, 224); height: auto; min-height:100vh; padding-top:100px; padding-bottom: 50px; font-family: 'Source Sans Pro', sans-serif;">
+        <div class="container" style="padding-top: 30px; padding-left: 150px; padding-right:150px;">
+            <h2 class="pt-4 pb-4" style="text-align: center;">Topic Edit</h2>
+            <div class="container border" style="text-align: center;">
+                @using (Html.BeginForm("EditTopic", "Forum", FormMethod.Post, new { @class = "editTopicForm" }))
+                {
+                    @Html.ValidationSummary()
+                    @Html.HiddenFor(m => m.Id);
+                    @Html.HiddenFor(m => m.Date);
+                    @Html.HiddenFor(m => m.Messages);
+                    @Html.HiddenFor(m => m.UserId);
+                    @Html.HiddenFor(m => m.UserName);
+                    <p><span>Edit Topic Name:</span></p>
+                    <p> @Html.TextBoxFor(m => m.Name, new { @class = "name-input" })</p>
+                    <p><span>Edit Topic Message:</span></p>
+                    <p>@Html.TextAreaFor(m => m.Text, new { @class = "topic-text-input", wrap = "off", rows = "10", cols = "60" })</p>
+                    <input type="submit" class="btn btn-success mb-4" value="Edit" >
+                }
+            </div>
+        </div>
+    </div>
 </div>

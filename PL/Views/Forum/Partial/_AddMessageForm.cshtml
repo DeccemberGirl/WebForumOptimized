@@ -1,14 +1,12 @@
-﻿@model WebForum.NewMessageFormModel
-    <div class="container border border-dark">
+﻿@model BLL.Models.NewMessageFormModel    
+    <div class="container border" style="text-align: center;">
         @using (Html.BeginForm("AddNewMessage", "Forum", FormMethod.Post, new { @class = "NewMessageForm" }))
         {
             @Html.ValidationSummary()
-        <p>
-            <span>Enter Message Text:</span>
-        </p>
+            <h4><br />Write new message:</h4>
         <p>
             <span>
-                @Html.TextAreaFor(m => m.Text, new { @class = "topic-text-input", wrap = "off", rows = "20" })
+                @Html.TextAreaFor(m => m.Text, new { @class = "topic-text-input", wrap = "off", rows = "10", cols = "50" })
             </span>
         </p>
         
@@ -16,7 +14,7 @@
                 @Html.HiddenFor(m => m.TopicId)
             </span>
             <p>
-            <input type="submit" class="btn btn-info mb-2" value="Add Message">
+            <input type="submit" class="btn btn-success mb-2" value="Add Message">
              </p>
         }
     </div>

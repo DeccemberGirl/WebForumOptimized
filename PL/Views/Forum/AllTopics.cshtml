@@ -1,38 +1,52 @@
-﻿@model WebForum.PagedTopicModel
+﻿@model BLL.Models.PagedTopicModel
 @{
     ViewBag.Title = "Topics";
 }
 
-<h2 class="pt-4 pb-4">All topics</h2>
-@Html.ActionLink("Add Topic", "AddTopicForm", "Forum", new { @class = "btn btn-info float-right" })
-@if (Model != null)
-{
-    <div class="column pt-5">
-        @foreach (var topic in Model.Topics)
-        {
-            <div class="col border border-dark mb-2" style="background-color: antiquewhite">
-
-                <p><h2>Topic Name:@Html.ActionLink(" " + @topic.Name, "DisplayTopic", "Forum", new { id = topic.Id }, null)</h2></p> <p>Topic Author: @topic.UserName</p> <p>
-                    Date: @topic.Date
-                </p> Number of messages:@(topic.MessageCount) <p>
-                    @if (User.IsInRole("admin"))
-                    {
-                        @Html.ActionLink("Delete Topic", "DeleteTopic", "Forum", new { topicId = topic.Id }, new { @class = "btn btn-info mt-2" });
-                    }
-                </p>
-
-            </div>
-        }
-    </div>
-    <ul class="pagination">
-        @for (int i = 1; i <= Model.TotalPages; i++)
-        {
-            <li class="@(i == Model.CurrentPage ? "page-item active" : "page-item")">
-                <a class="page-link" href="@Url.Action("AllTopics", new { currentPage = i })">@i</a>
-            </li>
-
-        }
-    </ul>
-
+@section Styles {    
+    <link href='@Url.Content("~/Content/signin_signup.css")' rel='stylesheet' type='text/css' />
 }
 
+<div class="parallax block">
+    <div class="container" style="width:1100px; background-color:rgb(224, 224, 224); height: auto; min-height:100vh; padding-top:100px; padding-bottom: 50px; font-family: 'Source Sans Pro', sans-serif;">
+        <div class="container" style="padding-top: 30px; padding-left: 150px; padding-right:150px;">
+            <a href="/Forum/AddTopicForm" style="padding-top: 50px; text-align: center; padding-left: 70px;">
+                <button type="button" class="btn btn-success" style="color: black;">
+                    <p style="font-size:16px; vertical-align: central; display: table-cell; text-align: center;"><b>Add topic</b></p>
+                </button>                
+            </a>
+            <small class="form-text text-muted" style="padding-left: 5px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" /><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" /></svg>
+                Click here if you want to create new topic
+            </small>
+            @if (Model != null)
+            {
+                <div class="column pt-5">
+                    @foreach (var topic in Model.Topics)
+                    {
+                        <div class="col border border-info rounded mb-2" style="background-color: #a8adb3; padding-left: 25px;"> <!--antiquewhite-->
+                            <p><h2>Topic Name:@Html.ActionLink(" " + @topic.Name, "DisplayTopic", "Forum", new { id = topic.Id }, null)</h2></p> 
+                            <p><b>Created by:</b> @topic.UserName</p> 
+                            <p><b>Date:</b> @topic.Date</p>
+                            <b>Messages:</b> @(topic.MessageCount) 
+                            <p>
+                            @if (User.IsInRole("admin"))
+                            {
+                                @Html.ActionLink("Delete Topic", "DeleteTopic", "Forum", new { topicId = topic.Id }, new { @class = "btn btn-success mt-2" });
+                            }
+                            </p>
+                        </div>
+                    }
+                </div>
+                <ul class="pagination pagination-lg justify-content-center" style="padding-top: 20px;">
+                    @for (int i = 1; i <= Model.TotalPages; i++)
+                    {
+                        <li class="@(i == Model.CurrentPage ? "page-item active" : "page-item")">
+                            <a class="page-link" href="@Url.Action("AllTopics", new { currentPage = i })">@i</a>
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+</div>

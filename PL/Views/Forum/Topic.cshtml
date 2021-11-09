@@ -1,22 +1,30 @@
-﻿@model WebForum.TopicControl
+﻿@model BLL.DTO.TopicDTO
 @{
     ViewBag.Title = "Topic";
 }
 
-<h2 class="pt-4 pb-4">Topic</h2>
-@Html.Partial("~/Views/Forum/Partial/_TopicStart.cshtml", Model)
-<hr />
-@Html.Partial("~/Views/Forum/Partial/_TopicMessages.cshtml", Model.Messages.Messages)
-<ul class="pagination">
-    @for (int i = 1; i <= Model.Messages.TotalPages; i++)
-    {
-        <li class="@(i == Model.Messages.CurrentPage ? "page-item active" : "page-item")">
-            <a class="page-link" href="@Url.Action("DisplayTopic", new { currentPage = i })">@i</a>
-        </li>
-
-    }
-</ul>
-@if (User.Identity.IsAuthenticated)
-{
-@Html.Partial("~/Views/Forum/Partial/_AddMessageForm.cshtml", Model.NewMessage)
+@section Styles {    
+    <link href='@Url.Content("~/Content/signin_signup.css")' rel='stylesheet' type='text/css' />
 }
+
+<div class="parallax block">
+    <div class="container" style="width:1100px; background-color:rgb(224, 224, 224); height: auto; min-height:100vh; padding-top:100px; padding-bottom: 50px; font-family: 'Source Sans Pro', sans-serif;">
+        <div class="container" style="padding-top: 30px; padding-left: 150px; padding-right:150px;">
+            @Html.Partial("~/Views/Forum/Partial/_TopicStart.cshtml", Model)
+            <hr />
+            @Html.Partial("~/Views/Forum/Partial/_TopicMessages.cshtml", Model.Messages.Messages)
+            <ul class="pagination pagination-lg justify-content-center" style="padding-top: 20px;">
+                @for (int i = 1; i <= Model.Messages.TotalPages; i++)
+                {
+                    <li class="@(i == Model.Messages.CurrentPage ? "page-item active" : "page-item")">
+                        <a class="page-link" href="@Url.Action("DisplayTopic", new { currentPage = i })">@i</a>
+                    </li>
+                }
+            </ul>
+            @if (User.Identity.IsAuthenticated)
+            {
+                @Html.Partial("~/Views/Forum/Partial/_AddMessageForm.cshtml", Model.NewMessage)
+            }
+        </div>
+    </div>
+</div>

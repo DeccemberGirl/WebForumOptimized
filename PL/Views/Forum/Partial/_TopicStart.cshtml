@@ -1,12 +1,12 @@
-﻿@model WebForum.TopicControl
+﻿@model BLL.DTO.TopicDTO
 @using Microsoft.AspNet.Identity;
-<h1 class="pt-4 pb-4">@Model.Name</h1>
-<div class="container border border-dark">
-    <p>Topic starter: @Model.UserName</p>
-    <p>@Model.Text</p>
+<h1 class="pt-4 pb-4" style="text-align: center;">@Model.Name</h1>
+<div class="container">
+    <p style="font-size: 19px;"><b>Created by:</b> @Model.UserName</p>
+    <p><b style="font-size: 19px;">Description: </b>@Model.Text</p>
     @if (User.Identity.GetUserId() == Model.UserId)
     {
         @Html.ActionLink("Edit Topic", "EditTopicForm", "Forum", Model,
-             new { @class = "btn btn-info mb-2" })
+             new { @class = "btn btn-success mb-2" })
     }
 </div>
