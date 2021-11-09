@@ -1,53 +1,79 @@
-﻿@model Tuple<IEnumerable<WebForum.TopicControl>, IEnumerable<WebForum.MessageControl>>
-@{
-    ViewBag.Title = "Home Page";
+﻿@model Tuple<IEnumerable<BLL.DTO.TopicDTO>, IEnumerable<BLL.DTO.MessageDTO>>
+
+@{ ViewData["Title"] = "Home - Enjoy IT with us"; }
+
+@section Styles {
+    <!--<link rel="stylesheet" href="~/Content/index.css" />-->
+    <link href='@Url.Content("~/Content/index.css")' rel='stylesheet' type='text/css' />
 }
 
-<div class="jumbotron">
-    <h1>Welcome to the Forum</h1>
-    <p class="lead">Welcome to the forum, use control panel to navigate the forum</p>
-    
-</div>
-
-<div class="row">
-    <div class="col-sm ">Last Topics</div>
-    <div class="col-sm ">Last Messages</div>
-
-</div>
-<div class="row">
-    <div class="col-sm">
-        @foreach (var topics in Model.Item1)
-        {
-            <div class="border border-dark">
-                <p>
-                    Date: @topics.Date
-                </p>
-                <p>
-                    Topic Name:@Html.ActionLink(" " + @topics.Name, "DisplayTopic", "Forum", new { id = topics.Id }, null)
-                </p>
-                <p>
-                    Author: @topics.UserName
-                </p>
-            </div>
-        }
-
-    </div>
-    <div class="col-sm">
-        @foreach (var messages in Model.Item2)
-        {
-        <div class="border border-dark">
-            <p>
-                Date: @messages.Date
-            </p>
-            <p>
-                Name: @messages.UserName
-            </p>
-            <p>
-                Text: @Html.ActionLink(" " + messages.Text, "DisplayTopic", "Forum", new { id = messages.TopicId }, null)
-            </p>
+<div class="containerr body_content" style="padding-top: 90px; padding-bottom: 6px; background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
+    <div class="flipper" id="target">
+        <div class="front">
+            <h1 class="title">Develop & Relax</h1>
         </div>
-        }
-        
     </div>
+</div>
 
+<div style="height:auto; background-color: rgb(224, 224, 224); font-size:20px;"> <!--rgb(224, 224, 224)-->
+    <div class="container" style="padding-top:40px; padding-bottom:55px; padding-left: 200px; padding-right: 250px; font-family: 'Source Sans Pro', sans-serif;">
+        <h1 style="font-size: 40px; text-align: center;">Check the last topics:</h1>
+        <div class="row">
+            <div class="col-sm " style="padding-left: 250px;">Topics</div>
+            <div class="col-sm " style="padding-left: 250px;">Messages</div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                @foreach (var topics in Model.Item1)
+                {
+                    <div class="post-wrap" style="display: inline-block; padding-left: 150px; ">
+                        <div class="post-item">
+                            <div class="item-content" style="width: 300px; height: 300px; border-radius: 15px; background-color: #4B4E6D">
+                                <div class="item-body">
+                                    <h5 style="color: white">Topic № @Html.ActionLink(" " + @topics.Id, "DisplayTopic", "Forum", new { id = topics.Id }, null)</h5>
+                                    <h5>@Html.ActionLink(" " + @topics.Name, "DisplayTopic", "Forum", new { id = topics.Id }, null)</h5>
+                                    <p style="color: white">Date: @topics.Date</p>
+                                </div>
+                                <div class="item-footer">
+                                    <p class="link"><span>Created by:<br> @topics.UserName</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div style="display: inline-block; padding-left: 10px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+                        </svg>
+                    </div>*@
+                }
+                </div>
+            <div class="col-sm">
+                @foreach (var messages in Model.Item2)
+                {
+                    <div class="post-wrap" style="display: inline-block; padding-left: 150px;">
+                        <div class="post-item">
+                            <div class="item-content" style="width: 300px; height: 300px; border-radius: 15px; background-color: #4B4E6D;">
+                                <div class="item-body">
+                                    <h6>@Html.ActionLink(" " + messages.Text, "DisplayTopic", "Forum", new { id = messages.TopicId }, null)</h6>
+                                    <p style="color: white">Date: @messages.Date</p>
+                                </div>
+                                <div class="item-footer">
+                                    <a href="#" class="link"><span>Written by:<br> @messages.UserName</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="containerr body_content" style="padding-top: 6px; padding-bottom: 6px; background: url('/Content/6.jpg') ; background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
+    <div class="flipper" id="target">
+        <div class="front">
+            <h1 class="title">Develop from anywhere you want</h1>
+            <h1 class="title" style="padding-top: 150px; font-size: 38px; text-decoration: none;"><a href="/Forum/AllTopics" style="text-align:center;">Start now <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" /></svg></a></h1>
+        </div>
+    </div>
 </div>
