@@ -89,6 +89,7 @@
     <Compile Include="Entities\ForumUser.cs" />
     <Compile Include="Entities\Message.cs" />
     <Compile Include="Entities\Topic.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="ForumContext.cs" />
     <Compile Include="Identity\ForumRoleManager.cs" />
     <Compile Include="Identity\ForumUserManager.cs" />
