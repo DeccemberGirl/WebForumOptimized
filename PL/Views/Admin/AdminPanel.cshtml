@@ -1,32 +1,42 @@
-﻿@model IEnumerable<WebForum.UserDTO>
+﻿@model IEnumerable<BLL.DTO.UserDTO>
 @{
     ViewBag.Title = "UserAdmin";
 }
-    <div class="table-container">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>User Email</th>
-                    <th>Role</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var user in Model)
-                {
+
+@section Styles {    
+    <link href='@Url.Content("~/Content/signin_signup.css")' rel='stylesheet' type='text/css' />
+}
+
+<div class="parallax block">
+    <div class="container" style="width:1100px; background-color:rgb(224, 224, 224); min-height:100vh; height: auto; padding-top:100px;padding-bottom:100px; text-align: center; font-family: 'Source Sans Pro', sans-serif;">
+        <div class="table-container">
+            <table class="table table-hover">
+                <thead>
                     <tr>
-                        <td>@user.UserName </td>
-                        <td>
-                        @foreach (var role in user.Role)
-                        {
-                            <span> @role |</span>  
-                        }
-                        </td>
-                        <td>@Html.ActionLink("Add\\Remove Admin","AddRemoveAdmin","Admin", new {id = user.Id }, new { @class = "btn btn-info" })
-                        @Html.ActionLink("Delete User","DeleteUser","Admin", new {id = user.Id }, new { @class = "btn btn-danger" })
-                        </td>
+                        <th>User Email</th>
+                        <th>Role</th>
+                        <th>Actions</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.UserName </td>
+                            <td>
+                                @foreach (var role in user.Role)
+                                {
+                                    <span> @role</span>
+                                }
+                            </td>
+                            <td>
+                                @Html.ActionLink("Add\\Remove Admin", "AddRemoveAdmin", "Admin", new { id = user.Id }, new { @class = "btn btn-success" })
+                                @Html.ActionLink("Delete User", "DeleteUser", "Admin", new { id = user.Id }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>            
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
+</div>
