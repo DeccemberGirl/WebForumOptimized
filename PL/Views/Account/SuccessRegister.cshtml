@@ -1,5 +1,12 @@
-﻿@{
-    ViewBag.Title = "End of registration";
+﻿@{ ViewBag.Title = "End of registration"; }
+
+@section Styles {
+    <link href='@Url.Content("~/Content/signin_signup.css")' rel='stylesheet' type='text/css' />
 }
 
-<h2>New account has been registered. Use registered email and password to log in</h2>
+
+<div class="parallax block">
+    <div class="container" style="width:1100px; background-color:rgb(224, 224, 224); height: 100vh; padding-top:150px;">
+        <h3 style="text-align: center; padding-top:60px; font-family: 'Source Sans Pro', sans-serif;">New account has been registered. Use registered email and password to log in</h3>        
+    </div>
+</div>

@@ -1,41 +1,41 @@
-﻿@model WebForum.LoginModel
+﻿@model PL.Models.LoginModel
 
-@{
-    ViewBag.Title = "Login";
+@{ ViewBag.Title = "Sign in"; }
+
+@section Styles {    
+    <link href='@Url.Content("~/Content/signin_signup.css")' rel='stylesheet' type='text/css' />
 }
 
-<h2>Login</h2>
+<div class="parallax block">
+    <div class="container" style="width:1100px; background-color:rgb(224, 224, 224); height: 100vh; padding-top:100px;">
+        <h3 style="text-align: center; padding-top:60px; font-family: 'Source Sans Pro', sans-serif;">Please, log in to your account:</h3>
+        <br />
+        <div class="container"  style="padding-top: 30px; padding-left: 350px; padding-right:250px;">
+            @using (Html.BeginForm())
+            {
+            @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Type your email" } })
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Type your password" } })                            
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>LoginModel</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Login in" class="btn btn-default border-dark" />
-            </div>
+                    <input type="submit" class="btn btn-success" value="Submit" id="submitButton" style="font-family: 'Source Sans Pro', sans-serif; margin-left:150px; color: black;" />
+                </div>
+            }
         </div>
     </div>
-}
-
+</div>
