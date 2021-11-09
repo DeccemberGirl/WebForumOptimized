@@ -1,6 +1,14 @@
 ﻿
-@{
-    ViewBag.Title = "Error 403";
+@{ ViewBag.Title = "Error 403"; }
+
+@section Styles {
+    <link href='@Url.Content("~/Content/signin_signup.css")' rel='stylesheet' type='text/css' />
 }
 
-<h2>Error 403. Forbidden</h2>
+
+<div class="parallax block">
+    <div class="container" style="width:1100px; background-color:rgb(224, 224, 224); height: 100vh; padding-top:150px;">
+        <h3 style="text-align: center; padding-top:60px; font-family: 'Source Sans Pro', sans-serif;">Oops! Something went wrong. Try again.</h3>
+        <h3 style="text-align: center; padding-top:60px; font-family: 'Source Sans Pro', sans-serif;">403 Eror. Forbidden</h3>
+    </div>
+</div>
