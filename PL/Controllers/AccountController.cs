@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using BLL.Services;
 using BLL.DTO;
 using BLL.Infrastructure;
+using WebForum.Models;
 
 namespace WebForum
 {
