@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using BLL.Services;
+using BLL.DTO;
+using BLL.Infrastructure;
 
 namespace WebForum
 {
@@ -44,7 +47,7 @@ namespace WebForum
             
             if (ModelState.IsValid)
             {
-                UserControl userctrl = new UserControl { Email = model.Email, Password = model.Password };
+                UserDTO userctrl = new UserDTO { Email = model.Email, Password = model.Password };
                 ClaimsIdentity claim = await _userService.Authenticate(userctrl);
                 if (claim == null)
                 {
@@ -92,7 +95,7 @@ namespace WebForum
 
             if (ModelState.IsValid)
             {
-                UserControl userctrl = new UserControl
+                UserDTO userctrl = new UserDTO
                 {
                     Email = model.Email,
                     Password = model.Password,
@@ -114,7 +117,7 @@ namespace WebForum
         /// <returns></returns>
         private async Task SetInitialDataAsync()
         {
-            await _userService.SetInitialData(new UserControl
+            await _userService.SetInitialData(new UserDTO
             {
                 Email = "admin@mail.ru",
                 UserName = "admin@mail.ru",
