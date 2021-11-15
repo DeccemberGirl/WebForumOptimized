@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using BLL.DTO;
+using BLL.Models;
+using BLL.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -136,7 +139,7 @@ namespace WebForum
         /// <param name="model"></param>
         /// <returns></returns>
         [Authorize]
-        public ActionResult EditMessageForm(MessageControl model)
+        public ActionResult EditMessageForm(MessageDTO model)
         {
             if(User.Identity.GetUserId()!=model.UserForumId)
             {
@@ -150,7 +153,7 @@ namespace WebForum
         /// <param name="model"></param>
         /// <returns></returns>
         [Authorize]
-        public ActionResult EditTopicForm(TopicControl model)
+        public ActionResult EditTopicForm(TopicDTO model)
         {
             if (User.Identity.GetUserId() != model.UserId)
             {
@@ -165,7 +168,7 @@ namespace WebForum
         /// <param name="model"></param>
         /// <returns></returns>
         [Authorize]
-        public async Task<ActionResult> EditMessage(MessageControl model)
+        public async Task<ActionResult> EditMessage(MessageDTO model)
         {
             var userName = User.Identity.Name;
             var userId = User.Identity.GetUserId();
@@ -205,7 +208,7 @@ namespace WebForum
         /// <param name="model"></param>
         /// <returns></returns>
         [Authorize]
-        public async Task<ActionResult> EditTopic(TopicControl model)
+        public async Task<ActionResult> EditTopic(TopicDTO model)
         {
             var userName = User.Identity.Name;
             var userId = User.Identity.GetUserId();

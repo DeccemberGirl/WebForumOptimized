@@ -1,4 +1,5 @@
-﻿using Ninject;
+﻿using BLL.DI;
+using Ninject;
 using Ninject.Modules;
 using Ninject.Web.Mvc;
 using System.Web.Mvc;

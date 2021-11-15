@@ -1,16 +1,15 @@
 ﻿namespace WebForum
 {
-    using DAL;
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ForumContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DAL.ForumContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ForumContext context)
+        protected override void Seed(DAL.ForumContext context)
         {
             //  This method will be called after migrating to the latest version.
 
