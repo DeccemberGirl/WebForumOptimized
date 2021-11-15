@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebForum
+namespace WebForum.Models
 {
     /// <summary>
     /// ViewModel for login form
