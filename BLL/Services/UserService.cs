@@ -32,13 +32,13 @@ namespace BLL.Services
         /// <returns></returns>
         public async Task<OperationDetails> Create(UserDTO userDto)
         {
+            if (String.IsNullOrEmpty(userDto.Email))
+            {
+                return new OperationDetails(false, "Email is empty", "Email");
+            }
             ForumUser user = await _database.UserManager.FindByEmailAsync(userDto.Email);
             if (user == null)
             {
-                if(String.IsNullOrEmpty(userDto.Email))
-                {
-                    return new OperationDetails(false, "Email is empty", "Email");
-                }
                 user = new ForumUser { Email = userDto.Email, UserName = userDto.Email };
                 var result = await _database.UserManager.CreateAsync(user, userDto.Password);
                 if (result.Errors.Count() > 0)
@@ -109,7 +109,6 @@ namespace BLL.Services
         }
         public IEnumerable<UserDTO> GetAllUsers()
         {
-            
             var users = _database.UserManager.Users;
             var outputlist = _mapper.MapList<ForumUser, UserDTO>(users);
             foreach(var user in outputlist)
