@@ -1,11 +1,11 @@
-﻿using Microsoft.Owin.Security;
+﻿using BLL.DTO;
+using BLL.Infrastructure;
+using BLL.Services;
+using Microsoft.Owin.Security;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using BLL.Services;
-using BLL.DTO;
-using BLL.Infrastructure;
 using WebForum.Models;
 
 namespace WebForum
@@ -15,14 +15,20 @@ namespace WebForum
     /// </summary>
     public class AccountController : Controller
     {
-        
-        private UserService _userService;
-        private IAuthenticationManager _authenticationManager;
+        private readonly UserService _userService;
+        private readonly IAuthenticationManager _authenticationManager;
+
+        /// <summary>
+        /// Creates an instance of an <see cref="AccountController">class</see>
+        /// </summary>
+        /// <param name="userService">Service which handles operations with user entities</param>
+        /// <param name="authenticationManager">Manager for authentication users</param>
         public AccountController(UserService userService, IAuthenticationManager authenticationManager)
         {
             _userService = userService;
             _authenticationManager = authenticationManager;
         }
+
         /// <summary>
         /// Shows Login page
         /// </summary>
@@ -35,11 +41,12 @@ namespace WebForum
             }
             return View();
         }
+
         /// <summary>
         /// Performs Login action
         /// </summary>
-        /// <param name="model"></param>
-        /// <returns> login model</returns>
+        /// <param name="model">Login model</param>
+        /// <returns> login model view</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginModel model)
@@ -57,15 +64,13 @@ namespace WebForum
                 else
                 {
                     _authenticationManager.SignOut();
-                    _authenticationManager.SignIn(new AuthenticationProperties
-                    {
-                        IsPersistent = true
-                    }, claim);
+                    _authenticationManager.SignIn(new AuthenticationProperties{IsPersistent = true}, claim);
                     return RedirectToAction("Index", "Home");
                 }
             }
             return View(model);
         }
+
         /// <summary>
         /// Performs logout action
         /// </summary>
@@ -75,19 +80,21 @@ namespace WebForum
             _authenticationManager.SignOut();
             return RedirectToAction("Index", "Home");
         }
+
         /// <summary>
         /// Reidrects to Register Form view
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Register form view</returns>
         public ActionResult Register()
         {
             return View();
         }
+
         /// <summary>
-        /// performs registration action
+        /// Performs registration action
         /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
+        /// <param name="model">Register model object</param>
+        /// <returns>Registration view</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterModel model)
@@ -104,6 +111,7 @@ namespace WebForum
                     Name = model.Name,
                     Role = new List<string> { "user" }
                 };
+
                 OperationDetails operationDetails = await _userService.Create(userctrl);
                 if (operationDetails.Succedeed)
                     return View("SuccessRegister");
@@ -112,10 +120,10 @@ namespace WebForum
             }
             return View(model);
         }
+
         /// <summary>
         /// Sets Admins user
         /// </summary>
-        /// <returns></returns>
         private async Task SetInitialDataAsync()
         {
             await _userService.SetInitialData(new UserDTO

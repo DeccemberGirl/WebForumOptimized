@@ -7,8 +7,15 @@ namespace WebForum.Models
     /// </summary>
     public class LoginModel
     {
+        /// <summary>
+        /// Account email
+        /// </summary>
         [Required]
         public string Email { get; set; }
+
+        /// <summary>
+        /// Account password
+        /// </summary>
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
