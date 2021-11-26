@@ -1,5 +1,5 @@
 # WebForumOptimized
-<h2>Our project is alredy here and works properly!.</h2>
+<h2>Our project is already here and works properly!.</h2>
 
 Should you have any problems while running the project from your local Visual Studio or anywhere else, please delete the following lines from the *./PL/WebForum.csproj* file:
 
