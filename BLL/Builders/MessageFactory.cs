@@ -8,10 +8,13 @@ namespace BLL.Builders
     /// </summary>
     public class NewMessageFactory : INewMessageFactory
     {
+        /// <summary>
+        /// Creates an instance of the new message at the forum
+        /// </summary>
+        /// <param name="topicId">the Id of the topic corresponding to the message</param>
         public NewMessageFormModel Create(int topicId)
         {
-            var message = new NewMessageFormModel { TopicId = topicId };
-            return message;
+            return new NewMessageFormModel { TopicId = topicId };
         }
     }
 }
