@@ -5,21 +5,24 @@ using System;
 namespace BLL.Builders
 {
     /// <summary>
-    /// Builder class for MessageDTO
+    /// Builder which transfers message information from DAL to BLL in the form of DTO
     /// </summary>
     public class MessageDTOBuilder : IMessageDTOBuilder
     {
         /// <summary>
-        /// Creates MessageDTO
+        /// Creates Message DTO to transfer information to other classes
         /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="userName"></param>
-        /// <param name="text"></param>
-        /// <returns>created messageDTO</returns>
+        /// <param name="userId">Id of the author of the message</param>
+        /// <param name="userName">Name of the message author</param>
+        /// <param name="text">Text of the message</param>
+        /// <returns>Created messageDTO</returns>
         public MessageDTO Create(string userId, string userName, string text)
         {
-            var messageDTO = new MessageDTO { Date = DateTime.Now.ToString(), UserForumId = userId, UserName = userName, Text = text };
-            return messageDTO;
+            return new MessageDTO { 
+                Date = DateTime.Now.ToString(), 
+                UserForumId = userId, 
+                UserName = userName, 
+                Text = text };
         }
     }
 }

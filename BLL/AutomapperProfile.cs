@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
 using BLL.DTO;
-using BLL.Models;
-using DAL.Entities;
 using DAL.Entities;
 
 namespace BLL
@@ -11,6 +9,9 @@ namespace BLL
     /// </summary>
     public class AutomapperProfile : Profile
     {
+        /// <summary>
+        /// Creates an instanse of an <see cref="AutomapperProfile">class</see>
+        /// </summary>
         public AutomapperProfile()
         {
             CreateMap<Message, MessageDTO>()
@@ -31,7 +32,6 @@ namespace BLL
                 .ForMember(p => p.Id, opt => opt.MapFrom(userId => userId.Id))
                 .ForMember(p => p.Email, opt => opt.MapFrom(email => email.Email))
                 .ForMember(p => p.UserName, opt => opt.MapFrom(userName => userName.UserName));
-                //.IncludeMembers(x => x.Roles.Select(x=>x.));
         }
     }
 }
